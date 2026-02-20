@@ -53,7 +53,7 @@ def load_data(query):
         return pd.DataFrame()
 
 # SIDEBAR: DISCOVERY FILTERS
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png", width=100)
+st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png", width=75)
 st.sidebar.title("🔍 Discovery Filters")
 
 # Updated filter: Swapped Machine Learning for Business Analyst
@@ -300,4 +300,5 @@ else:
     else:
         df_raw = load_data(f"SELECT TOP 100 * FROM {target}")
         
+
     st.dataframe(df_raw, use_container_width=True)
