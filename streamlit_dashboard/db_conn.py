@@ -1,5 +1,5 @@
 import streamlit as st
-import pyodbc
+import pyodbc # Used SQL Server as the db for the streamlit dashboard
 
 def get_connection():
     # Retrieve credentials from .streamlit/secrets.toml
@@ -12,4 +12,5 @@ def get_connection():
         "Trusted_Connection=yes;"
         "TrustServerCertificate=yes;" 
     )
+
     return pyodbc.connect(conn_str)
