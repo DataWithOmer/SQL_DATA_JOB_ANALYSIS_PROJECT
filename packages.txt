@@ -3,3 +3,4 @@ unixodbc
 unixodbc-dev
 gcc
 g++
+ACCEPT_EULA=Y msodbcsql18
