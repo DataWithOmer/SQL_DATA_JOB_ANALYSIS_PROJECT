@@ -1,2 +1,5 @@
 /.vscode
 /csv_files
+__pycache__/
+*.pyc
+.streamlit/
