@@ -1,6 +1,5 @@
-msodbcsql18
+msodbcsql17
 unixodbc
 unixodbc-dev
 gcc
 g++
-ACCEPT_EULA=Y msodbcsql18
