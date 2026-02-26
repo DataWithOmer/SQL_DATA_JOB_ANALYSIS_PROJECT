@@ -18,7 +18,7 @@ st.markdown("""
     .main { background-color: transparent; }
 
     section[data-testid="stSidebar"] {
-        background-color: #ffffff !important;
+        background-color: #5494DA !important;
         border-right: 2.5px solid rgba(255, 255, 255, 0.1) !important; }
 
     /* Card Container */
