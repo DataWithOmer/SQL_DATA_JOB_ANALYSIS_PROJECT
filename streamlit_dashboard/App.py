@@ -175,15 +175,18 @@ elif page == "📊 Market Overview":
         fig_bar.update_layout(font=dict(weight='bold'), margin=dict(t=30, b=10), coloraxis_showscale=True)
         st.plotly_chart(fig_bar, use_container_width=True)
     
+       col_header, col_switch = st.columns([4, 1])
     # Scatter Plot with Market Average 
-    st.subheader("🎯 Salary Benchmarking vs Market Average")
-    # Switch for Salary Type (Yearly vs Hourly)
-    salary_type = st.radio(
-    "**Select Salary Basis**:",
-    ["Yearly", "Hourly"],
-    horizontal=True,
-    key="salary_switch" 
-)
+    with col_header:
+        st.subheader("🎯 Salary Benchmarking vs Market Average")
+        
+    with col_switch:    
+        salary_type = st.radio(
+        "**Select Salary Basis**:",
+        ["Yearly", "Hourly"],
+        horizontal=True,
+        key="salary_switch" )
+        
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
     label_text = "Avg Yearly Salary" if salary_type == "Yearly" else "Avg Hourly Salary"
     tick_format = "$~s" if salary_type == "Yearly" else "$0"
@@ -209,11 +212,11 @@ elif page == "📊 Market Overview":
         m_avg = df_scatter['market_avg'].iloc[0] or 0
         avg_text = f"${m_avg/1000:,.0f}K" if salary_type == "Yearly" else f"${m_avg:,.2f}"
         if m_avg > 0:
-            fig_scatter.add_vline( x=m_avg, line_dash="dash", line_color="red", annotation_text=f"Market Avg: {avg_text}", annotation_position="top right" )
+            fig_scatter.add_vline( x=m_avg, line_dash="dash", line_color="#ef4444", annotation_text=f"Market Avg: {avg_text}", annotation_position="top right" )
             
         fig_scatter.update_layout( font=dict(weight='bold'), xaxis=dict(tickformat=tick_format),
                                    xaxis_title=label_text, yaxis_title="Job Title",
-                                   coloraxis_showscale=False, showlegend=True )
+                                   coloraxis_showscale=False, margin=dict(t=10) )
         
         st.plotly_chart(fig_scatter, use_container_width=True)
         
@@ -230,4 +233,5 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
