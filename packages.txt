@@ -1,5 +1,0 @@
-msodbcsql17
-unixodbc
-unixodbc-dev
-gcc
-g++
