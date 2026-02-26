@@ -13,20 +13,37 @@ st.set_page_config(
 # Enhanced CSS styling
 st.markdown("""
     <style>
+    /* Main Background */
     .main { background-color: #ffffff; }
-    .stMetric { 
-        background-color: #ffffff; 
-        padding: 20px; 
-        border-radius: 12px; 
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-        border-top: 4px solid #0073b1;
+
+    /* Card Container */
+    [data-testid="stMetric"] {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        border-top: 5px solid #10b981; /* Emerald Green top border */
+        text-align: center;
     }
+
+    /* Metric Heading (Label) - Black & Larger */
+    [data-testid="stMetricLabel"] p {
+        color: #000000 !important;
+        font-size: 20px !important; /* Increased size */
+        font-weight: 800 !important;
+    }
+
+    /* Metric Value - Emerald Green */
+    [data-testid="stMetricValue"] div {
+        color: #10b981 !important; /* Emerald Green */
+        font-size: 32px !important;
+        font-weight: 900 !important;
+    }
+
+    /* Heading Colors */
     h1, h2, h3 { color: #004182; font-weight: 800; }
     .dev-names { color: #0073b1; font-weight: bold; font-size: 18px; }
-    .overview-list { list-style-type: none; padding-left: 0; }
-    .overview-list li::before { content: "• "; color: #28a745; font-weight: bold; margin-right: 5px; }
-    </style>
-    """, unsafe_allow_html=True)
+    </style  """, unsafe_allow_html=True)
 
 # Database connection with caching
 @st.cache_resource
@@ -147,10 +164,11 @@ elif page == "📊 Market Overview":
     df_skills = load_data(skills_sql)
     if not df_skills.empty:
         df_skills['label'] = (df_skills['total_jobs'] / 1000).map('{:,.1f}K'.format)
-        custom_blue_scale = [ [0.0, '#D0E1F9'], [1.0, '#0073b1'] ]
+        # Use this scale for a modern, high-contrast look
+        emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
         
         fig_bar = px.bar( df_skills, x='skills', y='total_jobs', text='label', color='total_jobs', 
-                          color_continuous_scale=custom_blue_scale,
+                          color_continuous_scale=emerald_scale,
                           labels={'skills': 'Skills', 'total_jobs': 'Job Demand'} )
         
         fig_bar.update_traces(textposition='outside')
@@ -181,10 +199,11 @@ elif page == "📊 Market Overview":
     df_scatter = load_data(scatter_sql)
     
     if not df_scatter.empty:
-        custom_blue_scale = [ [0.0, '#D0E1F9'],  [1.0, '#0073b1'] ]
+
+        emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
         fig_scatter = px.scatter(df_scatter, x=col_to_use, y="job_title_short", 
                                  color=col_to_use, size=col_to_use, 
-                                 color_continuous_scale=custom_blue_scale,
+                                 color_continuous_scale=emerald_scale,
                                  labels={col_to_use: label_text, 'job_title_short': 'Job Title'} )
               
         m_avg = df_scatter['market_avg'].iloc[0] or 0
@@ -211,3 +230,4 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
