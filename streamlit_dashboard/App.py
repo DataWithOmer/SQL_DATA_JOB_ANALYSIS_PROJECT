@@ -19,11 +19,11 @@ st.markdown("""
 
     /* Card Container */
     [data-testid="stMetric"] {
-        background-color: #1e293b !important; /* Deep Slate background */
+        background-color: #ffffff !important;
         padding: 20px;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        border-top: 5px solid #10b981 !important; /* Emerald Green */
+        border-top: 5px solid #10b981 !important;
         text-align: center; }
 
     /* Metric Heading */
@@ -236,6 +236,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
