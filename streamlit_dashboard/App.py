@@ -11,39 +11,42 @@ st.set_page_config(
 )
 
 # Enhanced CSS styling
+# Enhanced CSS styling - Dark Mode Emerald Edition
 st.markdown("""
     <style>
     /* Main Background */
-    .main { background-color: #ffffff; }
+    .main { background-color: transparent; }
 
     /* Card Container */
     [data-testid="stMetric"] {
-        background-color: #ffffff;
+        background-color: #1e293b !important; /* Deep Slate background */
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        border-top: 5px solid #10b981; /* Emerald Green top border */
-        text-align: center;
-    }
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        border-top: 5px solid #10b981 !important; /* Emerald Green */
+        text-align: center; }
 
-    /* Metric Heading (Label) - Black & Larger */
+    /* Metric Heading */
     [data-testid="stMetricLabel"] p {
-        color: #000000 !important;
-        font-size: 20px !important; /* Increased size */
-        font-weight: 800 !important;
-    }
+        color: #ffffff !important; 
+        font-size: 18px !important; 
+        font-weight: 700 !important; }
 
-    /* Metric Value - Emerald Green */
+    /* Metric Value */
     [data-testid="stMetricValue"] div {
-        color: #10b981 !important; /* Emerald Green */
+        color: #10b981 !important; 
         font-size: 32px !important;
-        font-weight: 900 !important;
-    }
+        font-weight: 900 !important; }
+    h1, h2, h3 { color: #ffffff !important; font-weight: 800; }
+    .dev-names { 
+        color: #10b981 !important; 
+        font-weight: bold; 
+        font-size: 18px;  }
 
-    /* Heading Colors */
-    h1, h2, h3 { color: #004182; font-weight: 800; }
-    .dev-names { color: #0073b1; font-weight: bold; font-size: 18px; }
-    </style  """, unsafe_allow_html=True)
+    section[data-testid="stSidebar"] {
+        background-color: #0f172a !important;
+    }
+    </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
 @st.cache_resource
@@ -233,6 +236,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
