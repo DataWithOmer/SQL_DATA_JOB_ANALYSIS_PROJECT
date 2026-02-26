@@ -175,7 +175,7 @@ elif page == "📊 Market Overview":
         fig_bar.update_layout(font=dict(weight='bold'), margin=dict(t=30, b=10), coloraxis_showscale=True)
         st.plotly_chart(fig_bar, use_container_width=True)
     
-       col_header, col_switch = st.columns([4, 1])
+    col_header, col_switch = st.columns([4, 1])
     # Scatter Plot with Market Average 
     with col_header:
         st.subheader("🎯 Salary Benchmarking vs Market Average")
@@ -233,5 +233,6 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
