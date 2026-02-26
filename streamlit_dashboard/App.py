@@ -18,7 +18,7 @@ st.markdown("""
     .main { background-color: transparent; }
 
     section[data-testid="stSidebar"] {
-        background-color: #5494DA !important;
+        background-color: #ffffff !important;
         border-right: 2.5px solid rgba(255, 255, 255, 0.1) !important; }
 
     /* Card Container */
@@ -240,6 +240,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
