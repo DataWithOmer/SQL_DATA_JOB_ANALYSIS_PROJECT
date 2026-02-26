@@ -28,7 +28,7 @@ st.markdown("""
 
     /* Metric Heading */
     [data-testid="stMetricLabel"] p {
-        color: #ffffff !important; 
+        color: #000000 !important;
         font-size: 18px !important; 
         font-weight: 700 !important; }
 
@@ -236,6 +236,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
