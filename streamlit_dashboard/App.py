@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from db_conn import get_connection
+from country_list import COUNTRY_LIST
 
 # STREAMLIT CONFIGURATION
 st.set_page_config(
@@ -229,10 +230,22 @@ elif page == "📊 Market Overview":
 # Page 3: Salary Insights
 elif page == "💰 Salary Insights":
     st.title("💰 Salary Insights")
-    st.write("💸 High-Value Data Roles & Skills")
     st.divider()
-
-    st.subheader("🛠️ skill Highest-Paying Skills – 2023")
+    
+    # page level country filter
+    col_title, col_filter = st.columns([4, 1])
+    with col_title:
+        st.subheader("🛠️ Highest-Paying Skills – 2023")
+    with col_filter:
+        country_filter = st.selectbox(
+            "🌍 Select Country",
+            COUNTRY_LIST,
+            key="salary_country" )
+        
+    # Merged Filter
+    salary_where_clause = where_clause
+    if country_filter != "Global":
+        salary_where_clause += f" AND job_country = '{country_filter}'"
     salary_skills_sql = f"""
     WITH ranking AS (
         SELECT
@@ -242,7 +255,7 @@ elif page == "💰 Salary Insights":
         FROM job_postings_fact AS jobs
         INNER JOIN skills_job_dim ON jobs.job_id = skills_job_dim.job_id
         INNER JOIN skills_dim AS skills ON skills_job_dim.skill_id = skills.skill_id
-        WHERE salary_year_avg IS NOT NULL
+        {salary_where_clause} AND salary_year_avg IS NOT NULL
         GROUP BY skills
     )
     SELECT *
@@ -261,7 +274,8 @@ elif page == "💰 Salary Insights":
                              color_continuous_scale=emerald_scale,
                              labels={'avg_salary': 'Avg Salary', 'skills': 'Skills'} )
 
-        fig_salary.update_traces( textposition='inside', insidetextanchor='right' )
+        fig_salary.update_traces( text=df_salary_skills['label'], textposition='outside',
+                                  textfont=dict(color='white', size=14), cliponaxis=False )
 
         fig_salary.update_layout( xaxis_title="Average Salary ($)", yaxis_title="", 
                                   font=dict(weight='bold'), margin=dict(t=20, b=20),
