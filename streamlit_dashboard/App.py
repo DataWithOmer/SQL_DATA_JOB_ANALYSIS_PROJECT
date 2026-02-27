@@ -21,7 +21,7 @@ st.markdown("""
 
 /* Sidebar */
 section[data-testid="stSidebar"] {
-    background-color: #5494DA !important;
+    background-color: #2c456b !important;
     border-right: 2.5px solid rgba(255, 255, 255, 0.1); }
 
 /* Metrics Card */
@@ -239,6 +239,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
