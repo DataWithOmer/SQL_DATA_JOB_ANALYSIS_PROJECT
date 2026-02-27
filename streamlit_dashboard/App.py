@@ -237,8 +237,9 @@ elif page == "💰 Salary Insights":
     with col_title:
         st.subheader("🛠️ Highest-Paying Skills – 2023")
     with col_filter:
+        st.markdown('<span style="font-size:18px">🌍 Select Country</span>', unsafe_allow_html=True)
         country_filter = st.selectbox(
-            "🌍 Select Country",
+            "",
             COUNTRY_LIST,
             key="salary_country" )
         
@@ -297,3 +298,4 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
