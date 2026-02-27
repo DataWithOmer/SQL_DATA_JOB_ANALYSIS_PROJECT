@@ -236,17 +236,22 @@ elif page == "💰 Salary Insights":
     col_title, col_filter = st.columns([4, 1])
     with col_title:
         st.subheader("🛠️ Highest-Paying Skills – 2023")
+        
     with col_filter:
-        st.markdown('<span style="font-size:18px">🌍 Select Country</span>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:18px; margin-bottom:0.2px;">🌍 Select Country</div>', unsafe_allow_html=True)
+        # Add "Select All" as first option
+        country_options = ["Select All"] + COUNTRY_LIST
         country_filter = st.selectbox(
             "",
-            COUNTRY_LIST,
+            country_options,
+            index=0,
             key="salary_country" )
         
     # Merged Filter
     salary_where_clause = where_clause
-    if country_filter != "Global":
+    if country_filter != "Select All":
         salary_where_clause += f" AND job_country = '{country_filter}'"
+    
     salary_skills_sql = f"""
     WITH ranking AS (
         SELECT
@@ -298,4 +303,5 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
