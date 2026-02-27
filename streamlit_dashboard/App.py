@@ -11,46 +11,45 @@ st.set_page_config(
 )
 
 # Enhanced CSS styling
-# Enhanced CSS styling - Dark Mode Emerald Edition
 st.markdown("""
-    <style>
-    /* Main Background */
-    .main { background-color: transparent; }
+<style>
+/* App Background */
+.stApp { background-color: #020617; }
 
-    section[data-testid="stSidebar"] {
-        background-color: #5494DA !important;
-        border-right: 2.5px solid rgba(255, 255, 255, 0.1) !important; }
+/* Main Page Panel */
+.stAppViewContainer { background-color: #020617; }
 
-    /* Card Container */
-    [data-testid="stMetric"] {
-        background-color: #ffffff !important;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        border-top: 5px solid #10b981 !important;
-        text-align: center; }
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #5494DA !important;
+    border-right: 2.5px solid rgba(255, 255, 255, 0.1); }
 
-    /* Metric Heading */
-    [data-testid="stMetricLabel"] p {
-        color: #000000 !important;
-        font-size: 18px !important; 
-        font-weight: 700 !important; }
+/* Metrics Card */
+[data-testid="stMetric"] {
+    background-color: #ffffff !important;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-top: 5px solid #10b981 !important;
+    text-align: center; }
 
-    /* Metric Value */
-    [data-testid="stMetricValue"] div {
-        color: #10b981 !important; 
-        font-size: 32px !important;
-        font-weight: 900 !important; }
-    h1, h2, h3 { color: #ffffff !important; font-weight: 800; }
-    .dev-names { 
-        color: #10b981 !important; 
-        font-weight: bold; 
-        font-size: 18px;  }
+/* Metric Heading */
+[data-testid="stMetricLabel"] p {
+    color: #000000 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important; }
 
-    section[data-testid="stSidebar"] {
-        background-color: #0f172a !important;
-    }
-    </style> """, unsafe_allow_html=True)
+/* Metric Value */
+[data-testid="stMetricValue"] div {
+    color: #10b981 !important;
+    font-size: 32px !important;
+    font-weight: 900 !important; }
+
+h1, h2, h3 {
+    color: #ffffff !important;
+    font-weight: 800; }
+
+</style> """, unsafe_allow_html=True)
 
 # Database connection with caching
 @st.cache_resource
@@ -240,6 +239,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
