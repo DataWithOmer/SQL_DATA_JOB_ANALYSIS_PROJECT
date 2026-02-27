@@ -267,14 +267,16 @@ elif page == "💰 Salary Insights":
     df_salary_skills = load_data(salary_skills_sql)
     if not df_salary_skills.empty:
         df_salary_skills['label'] = df_salary_skills['avg_salary'].map('${:,.0f}'.format)
+        df_salary_skills = df_salary_skills.sort_values(by='avg_salary', ascending=True)
         emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
 
-        fig_salary = px.bar( df_salary_skills, x='avg_salary', y='skills',
+        fig_salary = px.bar( df_salary_skills, x='avg_salary', y=df_salary_skills['skills'].str.title(),
                              orientation='h', text='label', color='avg_salary',
                              color_continuous_scale=emerald_scale,
                              labels={'avg_salary': 'Avg Salary', 'skills': 'Skills'} )
 
-        fig_salary.update_traces( text=df_salary_skills['label'], textposition='outside',
+        fig_salary.update_traces( text=df_salary_skills['label'], textposition='inside', 
+                                  insidetextanchor='end', texttemplate='%{text}   ',
                                   textfont=dict(color='white', size=14), cliponaxis=False )
 
         fig_salary.update_layout( xaxis_title="Average Salary ($)", yaxis_title="", 
@@ -283,7 +285,7 @@ elif page == "💰 Salary Insights":
                                   plot_bgcolor='#020617', paper_bgcolor='#020617' )
 
         fig_salary.update_xaxes(showgrid=False)
-        fig_salary.update_yaxes(showgrid=False)
+        fig_salary.update_yaxes(showgrid=False, tickfont=dict(size=16) )
         st.plotly_chart(fig_salary, use_container_width=True)
 
 # Page 4: Skill Economics
