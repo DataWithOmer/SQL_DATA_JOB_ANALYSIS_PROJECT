@@ -5,7 +5,7 @@ from db_conn import get_connection
 
 # STREAMLIT CONFIGURATION
 st.set_page_config(
-    page_title="LinkedIn Data Jobs Analysis",
+    page_title="LinkedInsights",
     page_icon="💼",
     layout="wide"
 )
@@ -73,7 +73,7 @@ st.sidebar.title("🔍 Discovery Filters")
 job_filter = st.sidebar.selectbox(
     "Select Job Category", 
     ["All", "Data Analyst", "Data Scientist", "Data Engineer", "Business Analyst", "Machine Learning Engineer", "Senior Data Analyst",
-     "Senior Data Engineer", "Senior Data Scientist"] )
+     "Senior Data Engineer", "Senior Data Scientist", "Software Engineer", "Cloud Engineer"] )
 location_filter = st.sidebar.radio(
     "Location Type", 
     ["Global", "Remote Only"] )
@@ -91,7 +91,7 @@ if location_filter == "Remote Only":
     
 # PAGE 1: Project Overview 
 if page == "📑 Project Overview":
-    st.title("💼 LinkedIn Data Jobs Analysis")
+    st.title("💼 LinkedIn Jobs Dashboard - 2023")
     st.markdown("---")
     col1, col2 = st.columns([3, 2])
     
@@ -226,29 +226,58 @@ elif page == "📊 Market Overview":
         
         st.plotly_chart(fig_scatter, use_container_width=True)
         
+# Page 3: Salary Insights
 elif page == "💰 Salary Insights":
     st.title("💰 Salary Insights")
     st.write("💸 High-Value Data Roles & Skills")
-    
-# PAGE 3: Skill Economics
+    st.divider()
+
+    st.subheader("🛠️ skill Highest-Paying Skills – 2023")
+    salary_skills_sql = f"""
+    WITH ranking AS (
+        SELECT
+            skills,
+            ROUND(AVG(salary_year_avg), 0) AS avg_salary,
+            DENSE_RANK() OVER (ORDER BY AVG(salary_year_avg) DESC) AS rnk
+        FROM job_postings_fact AS jobs
+        INNER JOIN skills_job_dim ON jobs.job_id = skills_job_dim.job_id
+        INNER JOIN skills_dim AS skills ON skills_job_dim.skill_id = skills.skill_id
+        WHERE salary_year_avg IS NOT NULL
+        GROUP BY skills
+    )
+    SELECT *
+    FROM ranking
+    WHERE rnk <= 10
+    ORDER BY avg_salary DESC;
+    """
+
+    df_salary_skills = load_data(salary_skills_sql)
+    if not df_salary_skills.empty:
+        df_salary_skills['label'] = df_salary_skills['avg_salary'].map('${:,.0f}'.format)
+        emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
+
+        fig_salary = px.bar( df_salary_skills, x='avg_salary', y='skills',
+                             orientation='h', text='label', color='avg_salary',
+                             color_continuous_scale=emerald_scale,
+                             labels={'avg_salary': 'Avg Salary', 'skills': 'Skills'} )
+
+        fig_salary.update_traces( textposition='inside', insidetextanchor='right' )
+
+        fig_salary.update_layout( xaxis_title="Average Salary ($)", yaxis_title="", 
+                                  font=dict(weight='bold'), margin=dict(t=20, b=20),
+                                  coloraxis_showscale=False,
+                                  plot_bgcolor='#020617', paper_bgcolor='#020617' )
+
+        fig_salary.update_xaxes(showgrid=False)
+        fig_salary.update_yaxes(showgrid=False)
+        st.plotly_chart(fig_salary, use_container_width=True)
+
+# Page 4: Skill Economics
 elif page == "Skill Economics":
     st.title("💡 Skill Economics")
     st.write("💡 Skill Insights: Demand, Salary & Synergy")
 
-# PAGE 4: Top Hiring Companies
+# Page 5: Top Hiring Companies
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
-
-
-
-
-
-
-
-
-
-
-
-
-
