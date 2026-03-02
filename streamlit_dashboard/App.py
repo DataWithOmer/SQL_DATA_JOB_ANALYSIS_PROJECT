@@ -50,6 +50,22 @@ h1, h2, h3 {
     color: #ffffff !important;
     font-weight: 800; }
 
+[data-testid="stMain"] .stRadio > div[role="radiogroup"] {
+    margin-top: 10px !important;
+    padding-top: 0px !important;}
+
+[data-testid="stMain"] label[data-testid="stWidgetLabel"] p {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    margin-bottom: -5px !important; /* Pulls the buttons UP toward the text */}
+    
+.tight-header {
+    margin-top: 30px !important;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important; }
+
+[data-testid="stMain"] .stRadio {
+    margin-top: -25px !important; }  
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -133,13 +149,11 @@ elif page == "📊 Market Overview":
 
     with col_title:
         st.title("📊 Market Dashboard")
-
+        st.markdown('<hr style="margin-top:10px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
+        
     with col_filter:
         st.markdown("<div style='font-size:18px; margin-bottom:-12px; margin-top:0px;'>🌍 Select Country</div>", unsafe_allow_html=True)
-        market_country = st.selectbox(
-            "",
-            ["Select All"] + COUNTRY_LIST,
-            key="market_country")
+        market_country = st.selectbox("", ["Select All"] + COUNTRY_LIST, key="market_country")
         
     market_where = where_clause
     if market_country != "Select All":
@@ -187,7 +201,7 @@ elif page == "📊 Market Overview":
     if not df_skills.empty:
         df_skills['skills'] = df_skills['skills'].str.title()
         df_skills['label'] = (df_skills['total_jobs'] / 1000).map('{:,.1f}K'.format)
-        # Use this scale for a modern, high-contrast look
+        # Emerald scale for higher intensity
         emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
         
         fig_bar = px.bar( df_skills, x='skills', y='total_jobs', text='label', color='total_jobs', 
@@ -198,16 +212,16 @@ elif page == "📊 Market Overview":
         fig_bar.update_layout(font=dict(weight='bold'), margin=dict(t=30, b=10), coloraxis_showscale=True)
         st.plotly_chart(fig_bar, use_container_width=True)
     
-    col_header, col_switch = st.columns([4, 1])
+    st.markdown('<hr style="margin-top:7px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
     
-    # Scatter Plot with Market Average 
+      # Scatter Plot with Market Average 
+    col_header, col_switch = st.columns([4, 1])
     with col_header:
         st.subheader("🎯 Salary Benchmarking vs Market Average")
         
+    # Salary Type Switch
     with col_switch:    
-        salary_type = st.radio("**Select Salary Basis**:",["Yearly", "Hourly"],
-        horizontal=True,
-        key="salary_switch" )
+        salary_type = st.radio("**Select Salary Basis**:",["Yearly", "Hourly"], horizontal=True, key="salary_switch" )
         
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
     label_text = "Avg Yearly Salary" if salary_type == "Yearly" else "Avg Hourly Salary"
@@ -224,7 +238,6 @@ elif page == "📊 Market Overview":
     df_scatter = load_data(scatter_sql)
     
     if not df_scatter.empty:
-
         emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
         fig_scatter = px.scatter(df_scatter, x=col_to_use, y="job_title_short", 
                                  color=col_to_use, size=col_to_use, 
@@ -243,37 +256,28 @@ elif page == "📊 Market Overview":
         st.plotly_chart(fig_scatter, use_container_width=True)
           
 # Page 3: Salary Insights
-elif page == "💰 Salary Insights":
-    st.title("💰 Global Salary Overview")
-    st.markdown('<hr style="margin-top:10px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
+elif page == "💰 Salary Insights":  
+    st.markdown("""<style>[data-testid="stMain"] .stRadio > div { margin-top: -25px !important;} </style>""", unsafe_allow_html=True)
     
-    st.markdown("""
-    <style>
-    div[data-testid="stRadio"] {
-        margin-top: -50px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
-    # Page level country filter
-    col_title, col_filter = st.columns([4, 1])
+    col_title, col_filter = st.columns([4,1])
     with col_title:
-        st.markdown("""<h3 style='margin:0px 0px 2px 0px; padding:0px;'>🛠️ Highest-Paying Skills – 2023</h3>""", unsafe_allow_html=True)
-
+        st.title("💰 Global Salary Overview")
+        st.markdown('<hr style="margin-top:10px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
+    
     with col_filter:
-        st.markdown("""<div style='font-size:18px; margin:0px; padding:0px;'>🌍 Select Country</div>""", unsafe_allow_html=True)
-        country_options = ["Select All"] + COUNTRY_LIST
-        country_filter = st.selectbox("", country_options, index=0, key="salary_country")
-
+        st.markdown("<div style='font-size:18px; margin-bottom:-12px; margin-top:0px;'>🌍 Select Country</div>", unsafe_allow_html=True)
+        country_filter = st.selectbox("", ["Select All"] + COUNTRY_LIST, key="salary_country")
+        
+    st.subheader("🛠️ Highest-Paying Skills – 2023")
+    
     # Skill Type Filter
-    st.markdown('<style>div[data-testid="stAppViewContainer"] div[data-testid="stRadio"]{margin-top:-1px;}</style>', unsafe_allow_html=True)
-    st.markdown('<div style="margin-top:-50px; margin-bottom:-12px; font-weight:bold;">Skills Category:</div>', unsafe_allow_html=True)
+    st.markdown('<h5 class="tight-header">Skills Categories :</h5>', unsafe_allow_html=True)
     skill_type_ui = st.radio(
         "", 
         ["All", "Languages", "Tools", "Databases", "Cloud", "Libraries", "Frameworks"], 
         horizontal=True, key="salary_skill_type" )
     
-    # Mapping UI labels original database values
+    # Mapping UI labels to original database values
     skill_mapping = {
         "All": "All",
         "Languages": "programming",
@@ -283,18 +287,21 @@ elif page == "💰 Salary Insights":
         "Libraries": "Libraries",
         "Frameworks": "webframeworks" }
     selected_db_val = skill_mapping[skill_type_ui]
-        
-    # Building SQL WHERE conditions based on filters
+    
+    # Dynamic Salary Where Clause
     salary_where = where_clause
-    salary_where += " AND salary_year_avg IS NOT NULL"
-
     if country_filter != "Select All":
         salary_where += f" AND job_country = '{country_filter}'"
 
     if selected_db_val != "All":
         salary_where += f" AND LOWER(skills.type) = '{selected_db_val.lower()}'"
-
-    # 10 Highest Paying Skills Query
+        
+    # Dynamic Role Where Clause for Role Salary Chart
+    role_where = where_clause
+    if country_filter != "Select All":
+        role_where += f" AND job_country = '{country_filter}'"
+    
+     # 10 Highest Paying Skills Query
     salary_skills_sql = f"""
     WITH ranking AS (
         SELECT
@@ -304,10 +311,12 @@ elif page == "💰 Salary Insights":
         FROM job_postings_fact AS jobs
         INNER JOIN skills_job_dim ON jobs.job_id = skills_job_dim.job_id
         INNER JOIN skills_dim AS skills ON skills_job_dim.skill_id = skills.skill_id
-        {salary_where}
+        {salary_where} AND salary_year_avg IS NOT NULL
         GROUP BY skills.skills
     )
-    SELECT * FROM ranking WHERE rnk <= 10 ORDER BY avg_salary DESC; """
+    SELECT * FROM ranking
+    WHERE rnk <= 10 
+    ORDER BY avg_salary DESC; """
     
     df_salary_skills = load_data(salary_skills_sql)
     if not df_salary_skills.empty:
@@ -324,18 +333,70 @@ elif page == "💰 Salary Insights":
                             labels={'avg_salary': 'Avg Salary', 'skills': 'Skills'} )
 
         fig_salary.update_traces(textposition='inside', insidetextanchor='end', texttemplate='%{text}   ',
-                                 textfont=dict(color='white', size=14), cliponaxis=False )
+                                 textfont=dict(color='white', size=16), cliponaxis=False )
 
         fig_salary.update_layout(xaxis_title="Average Salary ($)", yaxis_title="", font=dict(weight='bold'), 
                                  margin=dict(t=20, b=20), coloraxis_showscale=False,
-                                plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)' )
+                                 plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)' )
 
-        fig_salary.update_xaxes(showgrid=False)
+        fig_salary.update_xaxes(showgrid=False, tickfont=dict(size=14))
         fig_salary.update_yaxes(showgrid=False, tickfont=dict(size=14))
         st.plotly_chart(fig_salary, use_container_width=True)
     else:
         st.info(f"No salary data available for selected filters.")
+    st.markdown('<hr style="margin-top:7px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
         
+    # Chart: Highest Average Salaries By Role
+    col_header, col_switch = st.columns([4, 1])
+    with col_header:
+        st.subheader("💼 Highest Average Salaries By Role")
+    
+    with col_switch:
+        salary_type = st.radio("**Select Salary Basis:**", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
+
+    col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
+    label_text = "Avg Yearly Salary ($)" if salary_type == "Yearly" else "Avg Hourly Salary"
+    tick_format = "$~s" if salary_type == "Yearly" else "$0"
+
+    salary_where_sql = role_where
+
+    # Query for top 10 highest average salaries by role
+    role_salary_sql = f"""
+        SELECT 
+            job_title_short AS role,
+            ROUND(AVG({col_to_use}), 0) AS avg_salary
+        FROM job_postings_fact
+        {salary_where_sql} AND {col_to_use} IS NOT NULL
+        GROUP BY job_title_short
+        ORDER BY avg_salary DESC
+        LIMIT 10 """
+
+    df_role_salary = load_data(role_salary_sql)
+
+    if not df_role_salary.empty:
+        df_role_salary = df_role_salary.sort_values(by='avg_salary', ascending=True)
+        df_role_salary['label'] = df_role_salary['avg_salary'].apply(lambda x: f"${x:,.0f}")
+
+        emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
+        
+        fig_role_salary = px.bar(df_role_salary, x='avg_salary', y='role',
+                                 orientation='h', text='label', color='avg_salary',
+                                 color_continuous_scale=emerald_scale,
+                                 labels={'avg_salary': label_text, 'role': 'Role'})
+
+        fig_role_salary.update_traces(textposition='inside', insidetextanchor='end', texttemplate='%{text}   ',
+                                      textfont=dict(color='white', size=16), cliponaxis=False)
+
+        fig_role_salary.update_layout(xaxis_title=label_text, yaxis_title="", font=dict(weight='bold'),
+                                      margin=dict(t=20, b=20), coloraxis_showscale=False,
+                                      plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+
+        fig_role_salary.update_xaxes(showgrid=False, tickfont=dict(size=14))
+        fig_role_salary.update_yaxes(showgrid=False, tickfont=dict(size=14))
+
+        st.plotly_chart(fig_role_salary, use_container_width=True)
+    else:
+        st.info("No salary data available for selected filters.")
     
 # Page 4: Skill Economics
 elif page == "Skill Economics":
