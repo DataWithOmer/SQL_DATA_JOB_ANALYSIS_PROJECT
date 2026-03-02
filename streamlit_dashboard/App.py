@@ -72,16 +72,16 @@ st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Link
 st.sidebar.title("🔍 Discovery Filters")
 
 job_filter = st.sidebar.selectbox(
-    "Select Job Category", 
+    "**Select Job Category**", 
     ["All", "Data Analyst", "Data Scientist", "Data Engineer", "Business Analyst", "Machine Learning Engineer", "Senior Data Analyst",
      "Senior Data Engineer", "Senior Data Scientist", "Software Engineer", "Cloud Engineer"] )
+
 location_filter = st.sidebar.radio(
-    "Location Type", 
-    ["Global", "Remote Only"] )
+    "**Location Type**",["Global", "Remote Only"] )
+
 st.sidebar.markdown("---")
 page = st.sidebar.selectbox( 
-    "Navigate To",
-    [  "📑 Project Overview", "📊 Market Overview", "💰 Salary Insights"  ,"🛠️ Skill Economics", "🏢 Top Hiring Companies" ])
+    "**Navigate To**",[  "📑 Project Overview", "📊 Market Overview", "💰 Salary Insights"  ,"🛠️ Skill Economics", "🏢 Top Hiring Companies" ])
 
 # Dynamic SQL Where Clause
 where_clause = "WHERE 1=1"
@@ -129,7 +129,22 @@ if page == "📑 Project Overview":
 
 # PAGE 2: Analytcis Dashboard
 elif page == "📊 Market Overview":
-    st.title("📊 Market Dashboard")
+    col_title, col_filter = st.columns([4,1])
+
+    with col_title:
+        st.title("📊 Market Dashboard")
+
+    with col_filter:
+        st.markdown("<div style='font-size:18px; margin-bottom:-12px; margin-top:0px;'>🌍 Select Country</div>", unsafe_allow_html=True)
+        market_country = st.selectbox(
+            "",
+            ["Select All"] + COUNTRY_LIST,
+            key="market_country")
+        
+    market_where = where_clause
+    if market_country != "Select All":
+        market_where += f" AND job_country = '{market_country}'"
+    
     # Card Visuals 
     kpi_query = f"""
         SELECT 
@@ -137,7 +152,7 @@ elif page == "📊 Market Overview":
             ROUND(AVG(salary_year_avg), 0) as sal,
             ROUND(SUM(CASE WHEN job_work_from_home IS TRUE THEN 1 ELSE 0 END) * 100.0 / COUNT(job_id), 1) as remote_pct
         FROM job_postings_fact
-        {where_clause} """
+        {market_where} """
     kpi_data = load_data(kpi_query)
     
     # Safe handling of potential NULL values in KPIs
@@ -163,13 +178,14 @@ elif page == "📊 Market Overview":
         FROM job_postings_fact AS jobs
         INNER JOIN skills_job_dim AS skill_to_job ON jobs.job_id = skill_to_job.job_id
         INNER JOIN skills_dim AS skills ON skill_to_job.skill_id = skills.skill_id
-        {where_clause}
+        {market_where}
         GROUP BY skills
         ORDER BY total_jobs DESC
         LIMIT 10 """
                 
     df_skills = load_data(skills_sql)
     if not df_skills.empty:
+        df_skills['skills'] = df_skills['skills'].str.title()
         df_skills['label'] = (df_skills['total_jobs'] / 1000).map('{:,.1f}K'.format)
         # Use this scale for a modern, high-contrast look
         emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
@@ -183,14 +199,13 @@ elif page == "📊 Market Overview":
         st.plotly_chart(fig_bar, use_container_width=True)
     
     col_header, col_switch = st.columns([4, 1])
+    
     # Scatter Plot with Market Average 
     with col_header:
         st.subheader("🎯 Salary Benchmarking vs Market Average")
         
     with col_switch:    
-        salary_type = st.radio(
-        "**Select Salary Basis**:",
-        ["Yearly", "Hourly"],
+        salary_type = st.radio("**Select Salary Basis**:",["Yearly", "Hourly"],
         horizontal=True,
         key="salary_switch" )
         
@@ -204,7 +219,7 @@ elif page == "📊 Market Overview":
         {col_to_use},
         (SELECT AVG({col_to_use}) FROM job_postings_fact WHERE {col_to_use} IS NOT NULL) AS market_avg
         FROM job_postings_fact
-        {where_clause} AND {col_to_use} IS NOT NULL """
+        {market_where} AND {col_to_use} IS NOT NULL """
 
     df_scatter = load_data(scatter_sql)
     
@@ -226,74 +241,102 @@ elif page == "📊 Market Overview":
                                    coloraxis_showscale=False, margin=dict(t=10) )
         
         st.plotly_chart(fig_scatter, use_container_width=True)
-        
+          
 # Page 3: Salary Insights
 elif page == "💰 Salary Insights":
-    st.title("💰 Salary Insights")
-    st.divider()
+    st.title("💰 Global Salary Overview")
+    st.markdown('<hr style="margin-top:10px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
     
-    # page level country filter
+    st.markdown("""
+    <style>
+    div[data-testid="stRadio"] {
+        margin-top: -50px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Page level country filter
     col_title, col_filter = st.columns([4, 1])
     with col_title:
-        st.subheader("🛠️ Highest-Paying Skills – 2023")
-        
+        st.markdown("""<h3 style='margin:0px 0px 2px 0px; padding:0px;'>🛠️ Highest-Paying Skills – 2023</h3>""", unsafe_allow_html=True)
+
     with col_filter:
-        st.markdown('<div style="font-size:18px; margin-bottom:0.2px;">🌍 Select Country</div>', unsafe_allow_html=True)
-        # Add "Select All" as first option
+        st.markdown("""<div style='font-size:18px; margin:0px; padding:0px;'>🌍 Select Country</div>""", unsafe_allow_html=True)
         country_options = ["Select All"] + COUNTRY_LIST
-        country_filter = st.selectbox(
-            "",
-            country_options,
-            index=0,
-            key="salary_country" )
-        
-    # Merged Filter
-    salary_where_clause = where_clause
-    if country_filter != "Select All":
-        salary_where_clause += f" AND job_country = '{country_filter}'"
+        country_filter = st.selectbox("", country_options, index=0, key="salary_country")
+
+    # Skill Type Filter
+    st.markdown('<style>div[data-testid="stAppViewContainer"] div[data-testid="stRadio"]{margin-top:-1px;}</style>', unsafe_allow_html=True)
+    st.markdown('<div style="margin-top:-50px; margin-bottom:-12px; font-weight:bold;">Skills Category:</div>', unsafe_allow_html=True)
+    skill_type_ui = st.radio(
+        "", 
+        ["All", "Languages", "Tools", "Databases", "Cloud", "Libraries", "Frameworks"], 
+        horizontal=True, key="salary_skill_type" )
     
+    # Mapping UI labels original database values
+    skill_mapping = {
+        "All": "All",
+        "Languages": "programming",
+        "Tools": "analyst_tools",
+        "Databases": "Databases",
+        "Cloud": "Cloud",
+        "Libraries": "Libraries",
+        "Frameworks": "webframeworks" }
+    selected_db_val = skill_mapping[skill_type_ui]
+        
+    # Building SQL WHERE conditions based on filters
+    salary_where = where_clause
+    salary_where += " AND salary_year_avg IS NOT NULL"
+
+    if country_filter != "Select All":
+        salary_where += f" AND job_country = '{country_filter}'"
+
+    if selected_db_val != "All":
+        salary_where += f" AND LOWER(skills.type) = '{selected_db_val.lower()}'"
+
+    # 10 Highest Paying Skills Query
     salary_skills_sql = f"""
     WITH ranking AS (
         SELECT
-            skills,
+            skills.skills,
             ROUND(AVG(salary_year_avg), 0) AS avg_salary,
             DENSE_RANK() OVER (ORDER BY AVG(salary_year_avg) DESC) AS rnk
         FROM job_postings_fact AS jobs
         INNER JOIN skills_job_dim ON jobs.job_id = skills_job_dim.job_id
         INNER JOIN skills_dim AS skills ON skills_job_dim.skill_id = skills.skill_id
-        {salary_where_clause} AND salary_year_avg IS NOT NULL
-        GROUP BY skills
+        {salary_where}
+        GROUP BY skills.skills
     )
-    SELECT *
-    FROM ranking
-    WHERE rnk <= 10
-    ORDER BY avg_salary DESC;
-    """
-
+    SELECT * FROM ranking WHERE rnk <= 10 ORDER BY avg_salary DESC; """
+    
     df_salary_skills = load_data(salary_skills_sql)
     if not df_salary_skills.empty:
-        df_salary_skills['label'] = df_salary_skills['avg_salary'].map('${:,.0f}'.format)
+        df_salary_skills['skills'] = df_salary_skills['skills'].str.title()
+        # Sorting for horizontal bar chart
         df_salary_skills = df_salary_skills.sort_values(by='avg_salary', ascending=True)
+        df_salary_skills['label'] = df_salary_skills['avg_salary'].apply(lambda x: f"${x:,.0f}")
+
         emerald_scale = [[0.0, '#064e3b'], [0.5, '#10b981'], [1.0, '#34d399']]
 
-        fig_salary = px.bar( df_salary_skills, x='avg_salary', y=df_salary_skills['skills'].str.title(),
-                             orientation='h', text='label', color='avg_salary',
-                             color_continuous_scale=emerald_scale,
-                             labels={'avg_salary': 'Avg Salary', 'skills': 'Skills'} )
+        fig_salary = px.bar(df_salary_skills, x='avg_salary', y='skills',
+                            orientation='h', text='label', color='avg_salary',
+                            color_continuous_scale=emerald_scale,
+                            labels={'avg_salary': 'Avg Salary', 'skills': 'Skills'} )
 
-        fig_salary.update_traces( text=df_salary_skills['label'], textposition='inside', 
-                                  insidetextanchor='end', texttemplate='%{text}   ',
-                                  textfont=dict(color='white', size=14), cliponaxis=False )
+        fig_salary.update_traces(textposition='inside', insidetextanchor='end', texttemplate='%{text}   ',
+                                 textfont=dict(color='white', size=14), cliponaxis=False )
 
-        fig_salary.update_layout( xaxis_title="Average Salary ($)", yaxis_title="", 
-                                  font=dict(weight='bold'), margin=dict(t=20, b=20),
-                                  coloraxis_showscale=False,
-                                  plot_bgcolor='#020617', paper_bgcolor='#020617' )
+        fig_salary.update_layout(xaxis_title="Average Salary ($)", yaxis_title="", font=dict(weight='bold'), 
+                                 margin=dict(t=20, b=20), coloraxis_showscale=False,
+                                plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)' )
 
         fig_salary.update_xaxes(showgrid=False)
-        fig_salary.update_yaxes(showgrid=False, tickfont=dict(size=16) )
+        fig_salary.update_yaxes(showgrid=False, tickfont=dict(size=14))
         st.plotly_chart(fig_salary, use_container_width=True)
-
+    else:
+        st.info(f"No salary data available for selected filters.")
+        
+    
 # Page 4: Skill Economics
 elif page == "Skill Economics":
     st.title("💡 Skill Economics")
@@ -303,5 +346,3 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
-
-
