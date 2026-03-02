@@ -50,14 +50,14 @@ h1, h2, h3 {
     color: #ffffff !important;
     font-weight: 800; }
 
-[data-testid="stMain"] .stRadio > div[role="radiogroup"] {
-    margin-top: 10px !important;
-    padding-top: 0px !important;}
+[data-testid="stMain"] div.stElementContainer:has(label[data-testid="stWidgetLabel"]) {
+    margin-top: 25px !important; }
 
 [data-testid="stMain"] label[data-testid="stWidgetLabel"] p {
-    font-size: 17px !important;
-    font-weight: 700 !important;
-    margin-bottom: -5px !important; /* Pulls the buttons UP toward the text */}
+    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -10px !important; }
+
+[data-testid="stMain"] .stRadio > div[role="radiogroup"] {
+    margin-top: 12px !important; }
     
 .tight-header {
     margin-top: 30px !important;
@@ -407,3 +407,4 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
