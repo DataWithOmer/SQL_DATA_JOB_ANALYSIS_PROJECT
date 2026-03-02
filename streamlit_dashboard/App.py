@@ -66,18 +66,6 @@ h1, h2, h3 {
 
 [data-testid="stMain"] .stRadio {
     margin-top: -25px !important; }
-
-[data-testid="stAppViewBlockContainer"] {
-    padding-top: 1rem !important; /* Standard is 6rem; this pulls it way up */
-    padding-left: 5rem !important; /* Optional: adjust side padding if needed */
-    padding-right: 5rem !important;}
-
-header[data-testid="stHeader"] {
-    height: 0px !important;
-    background: transparent !important; }
-
-.main .block-container {
-    padding-top: 2rem !important; }
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -419,6 +407,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
