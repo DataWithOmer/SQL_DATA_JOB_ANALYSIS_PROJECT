@@ -52,22 +52,28 @@ h1, h2, h3 {
     color: #ffffff !important;
     font-weight: 800; }
 
+# Reduce Gap Bw "Selct Salary Basis" & filters
 [data-testid="stMain"] div.stElementContainer:has(label[data-testid="stWidgetLabel"]) {
     margin-top: 25px !important; }
 
 [data-testid="stMain"] label[data-testid="stWidgetLabel"] p {
-    font-size: 16px !important; font-weight: 700 !important; margin-bottom: -10px !important; }
+    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -30px !important; }
 
 [data-testid="stMain"] .stRadio > div[role="radiogroup"] {
-    margin-top: 12px !important; }
+    margin-top: 20px !important; }
     
+/* Reducing gap bw Skills Category & radio Buttons */
 .tight-header {
     margin-top: 30px !important;
     margin-bottom: 0px !important;
     padding-bottom: 0px !important; }
 
-[data-testid="stMain"] .stRadio {
-    margin-top: -45px !important; }
+[data-testid="stMain"] .stRadio {margin-top: -55px !important;}
+    
+/* Reduce gap bw Select Country & dropdown label */
+[data-testid="stMain"] div[data-testid="stSelectbox"] label p {margin-bottom: -15px !important; font-size: 18px !important;}
+    
+ [data-testid="stMain"] div[data-testid="stSelectbox"] > div {margin-top: -35px !important;}   
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -409,6 +415,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
