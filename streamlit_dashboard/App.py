@@ -17,6 +17,12 @@ st.markdown("""
 /* App Background */
 .stApp { background-color: #020617; }
 
+header[data-testid="stHeader"] {
+            height: 0px !important;
+            background: transparent !important;
+            display: none; /* This hides the white bar entirely */
+        }
+
 .block-container {padding-top: 2rem !important;}
 
 /* Main Page Panel */
@@ -415,6 +421,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
