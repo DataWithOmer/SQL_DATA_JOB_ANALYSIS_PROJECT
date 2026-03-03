@@ -63,10 +63,10 @@ h1, h2, h3 {
     margin-top: 25px !important; }
 
 [data-testid="stMain"] label[data-testid="stWidgetLabel"] p {
-    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -35px !important; }
+    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -30px !important; }
 
 [data-testid="stMain"] .stRadio > div[role="radiogroup"] {
-    margin-top: 20px !important; }
+    margin-top: 30px !important; }
     
 /* Reducing gap bw Skills Category & radio Buttons */
 .tight-header {
