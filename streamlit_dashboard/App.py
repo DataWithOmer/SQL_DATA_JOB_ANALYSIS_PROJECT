@@ -63,7 +63,7 @@ h1, h2, h3 {
     margin-top: 25px !important; }
 
 [data-testid="stMain"] label[data-testid="stWidgetLabel"] p {
-    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -30px !important; }
+    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -35px !important; }
 
 [data-testid="stMain"] .stRadio > div[role="radiogroup"] {
     margin-top: 20px !important; }
@@ -421,6 +421,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
