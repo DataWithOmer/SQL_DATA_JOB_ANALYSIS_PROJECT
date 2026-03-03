@@ -17,7 +17,7 @@ st.markdown("""
 /* App Background */
 .stApp { background-color: #020617; }
 
-.block-container {padding-top: 1rem !important;}
+.block-container {padding-top: 2rem !important;}
 
 /* Main Page Panel */
 .stAppViewContainer { background-color: #020617; }
@@ -415,6 +415,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
