@@ -79,7 +79,7 @@ h1, h2, h3 {
 /* Reduce gap bw Select Country & dropdown label */
 [data-testid="stMain"] div[data-testid="stSelectbox"] label p {margin-bottom: -15px !important; font-size: 18px !important;}
     
- [data-testid="stMain"] div[data-testid="stSelectbox"] > div {margin-top: -35px !important;}   
+ [data-testid="stMain"] div[data-testid="stSelectbox"] > div {margin-top: -3px !important;}   
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -421,6 +421,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
