@@ -65,7 +65,7 @@ h1, h2, h3 {
     padding-bottom: 0px !important; }
 
 [data-testid="stMain"] .stRadio {
-    margin-top: -25px !important; }
+    margin-top: -45px !important; }
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -407,6 +407,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
