@@ -226,7 +226,7 @@ elif page == "📊 Market Overview":
         fig_bar.update_layout(font=dict(weight='bold'), margin=dict(t=30, b=10), coloraxis_showscale=True)
         st.plotly_chart(fig_bar, use_container_width=True)
     
-    st.markdown('<hr style="margin-top:5px; margin-bottom:20px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
+    st.markdown('<hr style="margin-top:0px; margin-bottom:38px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
     
       # Scatter Plot with Market Average 
     col_header, col_switch = st.columns([4, 1])
@@ -358,9 +358,9 @@ elif page == "💰 Salary Insights":
         st.plotly_chart(fig_salary, use_container_width=True)
     else:
         st.info(f"No salary data available for selected filters.")
+    st.markdown('<hr style="margin-top:-5px; margin-bottom:35px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
         
     # Chart: Highest Average Salaries By Role
-    st.markdown('<hr style="margin-top:7px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
     col_header, col_switch = st.columns([4, 1])
     with col_header:
         st.subheader("💼 Highest Average Salaries By Role")
@@ -421,4 +421,5 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
