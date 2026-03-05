@@ -223,7 +223,7 @@ elif page == "📊 Market Overview":
                           labels={'skills': 'Skills', 'total_jobs': 'Job Demand'} )
         
         fig_bar.update_traces(textposition='outside')
-        fig_bar.update_layout(font=dict(weight='bold'), margin=dict(t=30, b=10), coloraxis_showscale=True)
+        fig_bar.update_layout(font=dict(weight='bold'), margin=dict(t=30, b=10), bargap=0.4 ,coloraxis_showscale=True)
         st.plotly_chart(fig_bar, use_container_width=True)
     
     st.markdown('<hr style="margin-top:-5px; margin-bottom:46px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
@@ -350,7 +350,7 @@ elif page == "💰 Salary Insights":
                                  textfont=dict(color='white', size=16), cliponaxis=False )
 
         fig_salary.update_layout(xaxis_title="Average Salary ($)", yaxis_title="", font=dict(weight='bold'), 
-                                 margin=dict(t=20, b=20), coloraxis_showscale=False,
+                                 margin=dict(t=20, b=20), bargap=0.27 ,coloraxis_showscale=False,
                                  plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)' )
 
         fig_salary.update_xaxes(showgrid=False, tickfont=dict(size=14))
@@ -402,7 +402,7 @@ elif page == "💰 Salary Insights":
                                       textfont=dict(color='white', size=16), cliponaxis=False)
 
         fig_role_salary.update_layout(xaxis_title=label_text, yaxis_title="", font=dict(weight='bold'),
-                                      margin=dict(t=20, b=20), coloraxis_showscale=False,
+                                      margin=dict(t=20, b=20), bargap=0.27 ,coloraxis_showscale=False,
                                       plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
         fig_role_salary.update_xaxes(showgrid=False, tickfont=dict(size=14))
@@ -421,6 +421,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
