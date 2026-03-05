@@ -74,7 +74,7 @@ h1, h2, h3 {
     margin-bottom: 0px !important;
     padding-bottom: 0px !important; }
 
-[data-testid="stMain"] .stRadio {margin-top: -40px !important;}
+[data-testid="stMain"] .stRadio {margin-top: -45px !important;}
     
 /* Reduce gap bw Select Country & dropdown label */
 [data-testid="stMain"] div[data-testid="stSelectbox"] label p {margin-bottom: -15px !important; font-size: 18px !important;}
@@ -421,6 +421,7 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
+
 
 
 
