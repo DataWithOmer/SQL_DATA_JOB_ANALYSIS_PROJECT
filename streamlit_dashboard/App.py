@@ -270,8 +270,7 @@ elif page == "📊 Market Overview":
         st.plotly_chart(fig_scatter, use_container_width=True)
           
 # Page 3: Salary Insights
-elif page == "💰 Salary Insights":  
-    st.markdown("""<style>[data-testid="stMain"] .stRadio > div { margin-top: -25px !important;} </style>""", unsafe_allow_html=True)
+elif page == "💰 Salary Insights": 
     
     col_title, col_filter = st.columns([4,1])
     with col_title:
@@ -421,10 +420,3 @@ elif page == "Skill Economics":
 elif page == "Top Hiring Companies":
     st.title("🏢 Top Hiring Companies")
     st.write("🏢 Market Leaders: Top Hiring Companies")
-
-
-
-
-
-
-
