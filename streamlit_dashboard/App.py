@@ -765,11 +765,11 @@ elif page == "🏢 Top Hiring Companies":
 
     col_country, col_basis, col_spacer = st.columns([1, 1, 1.5])
     with col_country:
-        st.markdown("<div style='font-size:18px; font-weight:550; margin-bottom:-10px;'>🌍 Select Country</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:16px; font-weight:500; margin-bottom:-10px;'>🌍 Select Country</div>", unsafe_allow_html=True)
         company_country = st.selectbox("", ["Select All"] + COUNTRY_LIST, key="company_country")
 
     with col_basis:
-        st.markdown("<div style='font-size:18px; font-weight:700; margin-bottom:-10px;'>💰 Salary Basis</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size:16px; font-weight:500; margin-bottom:-10px;'>💰 Salary Basis</div>", unsafe_allow_html=True)
         company_salary_basis = st.selectbox("", ["Yearly", "Hourly"], key="company_basis")
 
     st.markdown("<div style='padding-top: 15px;'></div>", unsafe_allow_html=True)
@@ -822,6 +822,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
