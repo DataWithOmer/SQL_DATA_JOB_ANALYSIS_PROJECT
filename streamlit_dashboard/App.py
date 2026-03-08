@@ -827,16 +827,3 @@ elif page == "🏢 Top Hiring Companies":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
