@@ -178,7 +178,7 @@ if page == "📑 Project Overview":
     col3, col4 = st.columns(2)
     with col3:
         st.markdown("""
-        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:104px;'>
+        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:140px;'>
             <h5 style='color:#10b981; margin-top:0;'>🛠️ Skill Economics</h4>
             <p style='color:#94a3b8; font-size:14.5px;'>Optimal skills by demand vs salary, and skill co-occurrence patterns to guide learning paths.</p>
         </div> """, unsafe_allow_html=True)
@@ -823,6 +823,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
