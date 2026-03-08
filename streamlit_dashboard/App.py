@@ -143,7 +143,7 @@ if page == "📑 Project Overview":
     st.markdown("### 🎯 About This Project")
     st.markdown("""
     <div style='background-color:#0f172a; border-left: 4px solid #10b981; padding: 18px 22px; border-radius: 8px; margin-bottom: 20px;'>
-        <p style='color:#e2e8f0; font-size:16px; line-height:1.8; margin:0;'>
+        <p style='color:#e2e8f0; font-size:15px; line-height:1.8; margin:0;'>
         This dashboard analyzes over <b style='color:#10b981;'>700,000+ LinkedIn job postings</b> from 2023 to uncover
         data-driven insights about the job market for data professionals. It explores salary benchmarks,
         in-demand skills, skill combinations, and top-paying employers — helping job seekers and analysts
@@ -824,3 +824,4 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
