@@ -507,7 +507,7 @@ elif page == "💰 Salary Insights":
         st.subheader("💼 Highest Average Salaries By Role")
     
     with col_switch:
-        salary_type = st.radio("Select Salary Basis:", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
+        salary_type = st.radio("***Select Salary Basis:***", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
 
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
     label_text = "Avg Yearly Salary ($)" if salary_type == "Yearly" else "Avg Hourly Salary"
@@ -822,6 +822,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
