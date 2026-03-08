@@ -348,7 +348,8 @@ elif page == "📊 Market Overview":
         
     # Salary Type Switch
     with col_switch:    
-        salary_type = st.radio("**Select Salary Basis**:",["Yearly", "Hourly"], horizontal=True, key="salary_switch" )
+        st.markdown("<p style='font-size:17px; font-weight:600; margin-bottom:-15px; color:white;'>Select Salary Basis:</p>", unsafe_allow_html=True)
+        salary_type = st.radio("", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
         
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
     label_text = "Avg Yearly Salary ($)" if salary_type == "Yearly" else "Avg Hourly Salary ($)"
@@ -507,7 +508,8 @@ elif page == "💰 Salary Insights":
         st.subheader("💼 Highest Average Salaries By Role")
     
     with col_switch:
-        salary_type = st.radio("*Select Salary Basis:*", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
+        st.markdown("<p style='font-size:17px; font-weight:600; margin-bottom:-15px; color:white;'>Select Salary Basis:</p>", unsafe_allow_html=True)
+        salary_type = st.radio("", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
 
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
     label_text = "Avg Yearly Salary ($)" if salary_type == "Yearly" else "Avg Hourly Salary"
@@ -822,6 +824,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
