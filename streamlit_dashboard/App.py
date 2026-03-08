@@ -161,14 +161,14 @@ if page == "📑 Project Overview":
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("""
-        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
+        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:140px;'>
             <h5 style='color:#10b981; margin-top:0;'>📊 Market Overview</h4>
             <p style='color:#94a3b8; font-size:14.5px;'>Top demanded skills, job volume, remote availability, and salary benchmarking across roles.</p>
         </div> """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
-        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
+        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:140px;'>
             <h5 style='color:#10b981; margin-top:0;'>💰 Salary Insights</h4>
             <p style='color:#94a3b8; font-size:14.5px;'>Highest-paying skills and roles, filterable by country, job type, and salary basis.</p>
         </div> """, unsafe_allow_html=True)
@@ -178,14 +178,14 @@ if page == "📑 Project Overview":
     col3, col4 = st.columns(2)
     with col3:
         st.markdown("""
-        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
+        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:104px;'>
             <h5 style='color:#10b981; margin-top:0;'>🛠️ Skill Economics</h4>
             <p style='color:#94a3b8; font-size:14.5px;'>Optimal skills by demand vs salary, and skill co-occurrence patterns to guide learning paths.</p>
         </div> """, unsafe_allow_html=True)
 
     with col4:
         st.markdown("""
-        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
+        <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:140px;'>
             <h5 style='color:#10b981; margin-top:0;'>🏢 Top Employers</h4>
             <p style='color:#94a3b8; font-size:14.5px;'>Companies offering the highest average salaries, filterable by country and salary type.</p>
         </div> """, unsafe_allow_html=True)
@@ -823,6 +823,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
