@@ -140,7 +140,7 @@ if page == "📑 Project Overview":
     st.markdown('<hr style="margin-top:10px; margin-bottom:25px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
 
     # About the Project
-    st.markdown("### 🎯 About This Project")
+    st.markdown("## 🎯 About This Project")
     st.markdown("""
     <div style='background-color:#0f172a; border-left: 4px solid #10b981; padding: 18px 22px; border-radius: 8px; margin-bottom: 20px;'>
         <p style='color:#e2e8f0; font-size:15px; line-height:1.8; margin:0;'>
@@ -824,4 +824,5 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
