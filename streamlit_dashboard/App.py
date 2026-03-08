@@ -156,51 +156,50 @@ if page == "📑 Project Overview":
         </p> </div> """, unsafe_allow_html=True)
 
     # What You Can Explore
-    st.markdown("### 🗺️ What You Can Explore")
+    st.markdown("#### 🗺️ What You Can Explore")
     
     col1, col2 = st.columns(2)
     with col1:
         st.markdown("""
         <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
             <h4 style='color:#10b981; margin-top:0;'>📊 Market Overview</h4>
-            <p style='color:#94a3b8; font-size:15.5px;'>Top demanded skills, job volume, remote availability, and salary benchmarking across roles.</p>
+            <p style='color:#94a3b8; font-size:14.5px;'>Top demanded skills, job volume, remote availability, and salary benchmarking across roles.</p>
         </div> """, unsafe_allow_html=True)
 
     with col2:
         st.markdown("""
         <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
             <h4 style='color:#10b981; margin-top:0;'>💰 Salary Insights</h4>
-            <p style='color:#94a3b8; font-size:15.5px;'>Highest-paying skills and roles, filterable by country, job type, and salary basis.</p>
+            <p style='color:#94a3b8; font-size:14.5px;'>Highest-paying skills and roles, filterable by country, job type, and salary basis.</p>
         </div> """, unsafe_allow_html=True)
 
     st.markdown("<div style='margin-top:15px;'></div>", unsafe_allow_html=True)
     
     col3, col4 = st.columns(2)
-
     with col3:
         st.markdown("""
         <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
             <h4 style='color:#10b981; margin-top:0;'>🛠️ Skill Economics</h4>
-            <p style='color:#94a3b8; font-size:15.5px;'>Optimal skills by demand vs salary, and skill co-occurrence patterns to guide learning paths.</p>
+            <p style='color:#94a3b8; font-size:14.5px;'>Optimal skills by demand vs salary, and skill co-occurrence patterns to guide learning paths.</p>
         </div> """, unsafe_allow_html=True)
 
     with col4:
         st.markdown("""
         <div style='background-color:#0f172a; border-top: 3px solid #10b981; padding:20px; border-radius:8px; height:160px;'>
             <h4 style='color:#10b981; margin-top:0;'>🏢 Top Employers</h4>
-            <p style='color:#94a3b8; font-size:15.5px;'>Companies offering the highest average salaries, filterable by country and salary type.</p>
+            <p style='color:#94a3b8; font-size:14.5px;'>Companies offering the highest average salaries, filterable by country and salary type.</p>
         </div> """, unsafe_allow_html=True)
 
     # Dataset & Tech Stack 
     st.markdown("<div style='margin-top:25px;'></div>", unsafe_allow_html=True)
-    st.markdown("### 🗄️ Dataset & Tech Stack")
+    st.markdown("#### 🗄️ Dataset & Tech Stack")
     col_data, col_tech = st.columns([1, 1])
 
     with col_data:
         st.markdown("""
         <div style='background-color:#0f172a; border-left: 4px solid #10b981; padding:18px; border-radius:8px;'>
-            <p style='color:#10b981; font-weight:700; font-size:16.5px; margin-bottom:10px;'>📦 Dataset</p>
-            <p style='color:#94a3b8; font-size:15.5px; line-height:1.8; margin:0;'>
+            <p style='color:#10b981; font-weight:700; font-size:15.5px; margin-bottom:10px;'>📦 Dataset</p>
+            <p style='color:#94a3b8; font-size:14.5px; line-height:1.8; margin:0;'>
             • <b style='color:#e2e8f0;'>Source:</b> Luke Barousse Jobs Data 2023<br>
             • <b style='color:#e2e8f0;'>Volume:</b> 700,000+ job postings<br>
             • <b style='color:#e2e8f0;'>Coverage:</b> Global, across multiple industries<br>
@@ -210,8 +209,8 @@ if page == "📑 Project Overview":
     with col_tech:
         st.markdown("""
         <div style='background-color:#0f172a; border-left: 4px solid #10b981; padding:18px; border-radius:8px;'>
-            <p style='color:#10b981; font-weight:700; font-size:16.5px; margin-bottom:10px;'>⚙️ Tech Stack</p>
-            <p style='color:#94a3b8; font-size:15.5px; line-height:1.8; margin:0;'>
+            <p style='color:#10b981; font-weight:700; font-size:15.5px; margin-bottom:10px;'>⚙️ Tech Stack</p>
+            <p style='color:#94a3b8; font-size:14.5px; line-height:1.8; margin:0;'>
             • <b style='color:#e2e8f0;'>Frontend:</b> Python Streamlit<br>
             • <b style='color:#e2e8f0;'>Visualizations:</b> Plotly Express<br>
             • <b style='color:#e2e8f0;'>Database:</b> PostgreSQL (Avien.io)<br>
@@ -228,7 +227,7 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='text-align:left; padding:15px 0 10px 0;'>
             <p style='color:#94a3b8; font-size:15.5px; margin-bottom:6px;'>Built by</p>
-            <p style='color:#10b981; font-size:20px; font-weight:800; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
+            <p style='color:#10b981; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
             <a href='https://www.linkedin.com/in/omer-faisal876/' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0a66c2;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
@@ -240,7 +239,7 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='padding:15px 0 10px 0; width:fit-content; margin-left:auto;'>
             <p style='color:#94a3b8; font-size:15.5px; margin-bottom:6px;'>Course Instructor</p>
-            <p style='color:#10b981; font-size:20px; font-weight:800; margin:0 0 12px 0;'>Luke Barousse</p>
+            <p style='color:#10b981; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Luke Barousse</p>
             <a href='https://www.lukebarousse.com/' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0f172a;
                       color:#10b981; text-decoration:none; padding:8px 18px; border-radius:6px;
@@ -824,6 +823,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
