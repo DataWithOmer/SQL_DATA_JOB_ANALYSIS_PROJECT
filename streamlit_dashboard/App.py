@@ -340,7 +340,7 @@ elif page == "📊 Market Overview":
         
         st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
     
-    st.markdown('<hr style="margin-top:7px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
+    st.markdown('<hr style="margin-top:40px; margin-bottom:10px; border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
     
       # Scatter Plot with Market Average 
     col_header, col_switch = st.columns([4, 1])
@@ -823,6 +823,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
