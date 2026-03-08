@@ -411,7 +411,7 @@ elif page == "💰 Salary Insights":
         country_filter = st.selectbox("", ["Select All"] + COUNTRY_LIST, key="salary_country")
         
     st.subheader("🛠️ Highest-Paying Skills – 2023")
-    st.markdown('<h5 class="tight-header">Skills Categories :</h5>', unsafe_allow_html=True)
+    st.markdown('<h6 class="tight-header">Skills Categories :</h5>', unsafe_allow_html=True)
     
     # Skill Type Filter
     skill_type_ui = st.radio(
@@ -507,7 +507,7 @@ elif page == "💰 Salary Insights":
         st.subheader("💼 Highest Average Salaries By Role")
     
     with col_switch:
-        salary_type = st.radio("**Select Salary Basis:**", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
+        salary_type = st.radio("Select Salary Basis:", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
 
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
     label_text = "Avg Yearly Salary ($)" if salary_type == "Yearly" else "Avg Hourly Salary"
@@ -822,6 +822,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
