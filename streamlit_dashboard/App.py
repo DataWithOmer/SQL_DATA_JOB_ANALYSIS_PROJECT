@@ -66,7 +66,7 @@ h1, h2, h3 {
     font-size: 16.5px !important; font-weight: 600 !important; margin-bottom: -30px !important; }
 
 [data-testid="stMain"] .stRadio > div[role="radiogroup"] {
-    margin-top: 20px !important; }
+    margin-top: 25px !important; }
     
 /* Reducing gap bw Skills Category & radio Buttons */
 .tight-header {
@@ -80,6 +80,10 @@ h1, h2, h3 {
 [data-testid="stMain"] div[data-testid="stSelectbox"] label p {margin-bottom: -15px !important; font-size: 18px !important;}
     
 [data-testid="stMain"] div[data-testid="stSelectbox"] > div {margin-top: -3px !important;}   
+
+[data-testid="stSidebar"] {min-width: 225px !important; max-width: 225px !important; }
+
+[data-testid="stSidebarResizeHandle"] {display: none !important;}
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -832,6 +836,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
