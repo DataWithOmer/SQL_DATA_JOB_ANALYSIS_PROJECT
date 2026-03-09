@@ -80,10 +80,6 @@ h1, h2, h3 {
 [data-testid="stMain"] div[data-testid="stSelectbox"] label p {margin-bottom: -15px !important; font-size: 18px !important;}
     
 [data-testid="stMain"] div[data-testid="stSelectbox"] > div {margin-top: -3px !important;}   
-
-[data-testid="stSidebar"] {min-width: 224px !important; max-width: 224px !important;}
-[data-testid="stSidebarResizeHandle"] {
-    display: none !important; }
 </style> """, unsafe_allow_html=True)
 
 # Database connection with caching
@@ -836,6 +832,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
