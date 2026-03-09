@@ -100,13 +100,11 @@ def load_data(query):
 # dynamic country fetching from db
 @st.cache_data
 def load_countries():
-    """ Fetch all unique countries directly from the database """
     df = load_data("""
         SELECT DISTINCT job_country
         FROM job_postings_fact
-        WHERE job_country IS NOT NULL
-        ORDER BY job_country ASC
-    """)
+        WHERE job_country <> 'Israel' AND job_country IS NOT NULL
+        ORDER BY job_country ASC """)
     return df['job_country'].tolist() if not df.empty else []
 
 COUNTRY_LIST = load_countries()
@@ -833,6 +831,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
