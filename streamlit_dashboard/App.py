@@ -63,10 +63,10 @@ h1, h2, h3 {
     margin-top: 25px !important; }
 
 [data-testid="stMain"] label[data-testid="stWidgetLabel"] p {
-    font-size: 18px !important; font-weight: 700 !important; margin-bottom: -30px !important; }
+    font-size: 16.5px !important; font-weight: 600 !important; margin-bottom: -30px !important; }
 
 [data-testid="stMain"] .stRadio > div[role="radiogroup"] {
-    margin-top: 30px !important; }
+    margin-top: 20px !important; }
     
 /* Reducing gap bw Skills Category & radio Buttons */
 .tight-header {
@@ -832,6 +832,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
