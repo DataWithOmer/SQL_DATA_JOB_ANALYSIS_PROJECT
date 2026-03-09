@@ -398,7 +398,7 @@ elif page == "📊 Market Overview":
                                   hoverlabel=dict(
                                       bgcolor='#1e293b', bordercolor='#10b981',
                                       font=dict(color='white', size=13)
-                                   ),
+                                  ),
                                   xaxis_title=label_text, yaxis_title="Job Title",
                                   coloraxis_showscale=False, margin=dict(t=10), 
                                   modebar=dict(
@@ -427,8 +427,7 @@ elif page == "💰 Salary Insights":
     st.markdown('<h6 class="tight-header">Skills Categories :</h5>', unsafe_allow_html=True)
     
     # Skill Type Filter
-    skill_type_ui = st.radio(
-        "", 
+    skill_type_ui = st.radio("", 
         ["All", "Languages", "Tools", "Databases", "Cloud", "Libraries", "Frameworks"], 
         horizontal=True, key="salary_skill_type" )
     
@@ -701,9 +700,6 @@ elif page == "🛠️ Skill Economics":
         skill_options = sorted([s.title() for s in df_skills['skills'].tolist()])
         default_idx = skill_options.index('Python')
 
-        if 'cooc_skill' not in st.session_state:
-            st.session_state['cooc_skill'] = skill_options[default_idx]
-
         col_skill, _ = st.columns([1, 3])
         with col_skill:
             st.markdown("<div style='font-size:16px; font-weight:700; color:white; margin-bottom:-35px;'>Select Skill</div>", unsafe_allow_html=True)
@@ -836,24 +832,6 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
