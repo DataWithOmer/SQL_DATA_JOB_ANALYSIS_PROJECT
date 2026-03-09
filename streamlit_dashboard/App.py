@@ -15,11 +15,11 @@ st.markdown(""" <style>
 .stApp { background-color: #020617; }
 
 header[data-testid="stHeader"] {
-            height: 0px !important;
-            background: transparent !important;
-            display: none;}
+            height: 0px !important; background: transparent !important; display: none;}
 
 .block-container {padding-top: 2rem !important;}
+
+section[data-testid="stSidebar"] > div > div > div {margin-top: -20px !important;}
 
 /* Main Page Panel */
 .stAppViewContainer { background-color: #020617; }
@@ -836,6 +836,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
