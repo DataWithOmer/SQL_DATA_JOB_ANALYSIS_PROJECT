@@ -211,8 +211,8 @@ if page == "📑 Project Overview":
             <p style='color:#94a3b8; font-size:14.5px; line-height:1.8; margin:0;'>
             • <b style='color:#e2e8f0;'>Frontend:</b> Python Streamlit<br>
             • <b style='color:#e2e8f0;'>Visualizations:</b> Plotly Express<br>
-            • <b style='color:#e2e8f0;'>Database:</b> PostgreSQL (Avien.io)<br>
-            • <b style='color:#e2e8f0;'>Queries:</b> Advanced SQL (CTEs, Joins, Window Functions)<br>
+            • <b style='color:#e2e8f0;'>Database:</b> PostgreSQL<br>
+            • <b style='color:#e2e8f0;'>Cloud Database Hosting:</b> Aiven.io<br>
             • <b style='color:#e2e8f0;'>AI-Augmented Development:</b> Python, Streamlit & Plotly
             </p> </div> """, unsafe_allow_html=True)
 
@@ -831,4 +831,5 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
