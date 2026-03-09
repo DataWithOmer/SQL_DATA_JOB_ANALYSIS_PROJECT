@@ -243,7 +243,7 @@ if page == "📑 Project Overview":
 
     with col_yt:
         st.markdown("""
-        <div style='text-align:center; padding:35px 0 10px 0;'>
+        <div style='text-align:center; padding:38px 0 10px 0;'>
             <p style='color:#94a3b8; font-size:13px; margin-bottom:6px;'> </p>
             <p style='color:#94a3b8; font-size:16px; font-weight:680; margin:0 0 12px 0;'>Course Link</p>
             <a href='https://youtu.be/7mz73uXD9DA?si=KnEMVkzxMWeMLSX2' target='_blank'
@@ -832,6 +832,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
