@@ -250,8 +250,10 @@ if page == "📑 Project Overview":
             <a href='https://youtu.be/7mz73uXD9DA?si=KnEMVkzxMWeMLSX2' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#ff0000;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
-                      font-size:14px; font-weight:600;'>
-                ▶ Watch on YouTube </a> </div> """, unsafe_allow_html=True)
+                      font-size:15px; font-weight:600;'>
+               <img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg'
+                    width='18' height='18' style='filter:invert(1); vertical-align:middle;'>
+                Watch on YouTube </a> </div> """, unsafe_allow_html=True)
 
     with col_inst:
         st.markdown("""
@@ -831,6 +833,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
