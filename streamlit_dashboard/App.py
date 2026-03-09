@@ -148,7 +148,7 @@ if page == "📑 Project Overview":
         make smarter career decisions. Each page comes with filters for job category, location type,
         and country so you can slice the data most relevant to you.
         <br>
-        This project was inspired by the course <b style='color:#10b981;'>SQL For Data Analytics</b> course by
+        This project was inspired by the <b style='color:#10b981;'>SQL For Data Analytics</b> course by
         <b style='color:#10b981;'>Luke Barousse</b> — a huge shoutout to him for the dataset,
         the guidance, and providing these kinds of courses for free of cost.
         </p> </div> """, unsafe_allow_html=True)
@@ -831,3 +831,4 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
