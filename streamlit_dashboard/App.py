@@ -360,7 +360,7 @@ elif page == "📊 Market Overview":
         
     # Salary Type Switch
     with col_switch:    
-        st.markdown("<p style='font-size:17px; font-weight:600; margin-bottom:-15px; color:white;'>Select Salary Basis:</p>", unsafe_allow_html=True)
+        st.markdown("<p style='font-size:15.5px; font-weight:600; margin-bottom:-15px; color:white;'>Select Salary Basis:</p>", unsafe_allow_html=True)
         salary_type = st.radio("", ["Yearly", "Hourly"], horizontal=True, key="role_salary_switch")
         
     col_to_use = "salary_year_avg" if salary_type == "Yearly" else "salary_hour_avg"
@@ -836,6 +836,7 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
 
