@@ -227,12 +227,20 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='text-align:left; padding:15px 0 10px 0;'>
             <p style='color:#94a3b8; font-size:15.5px; margin-bottom:6px;'>Built by</p>
-            <p style='color:#10b981; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
-            <a href='https://www.linkedin.com/in/omer-faisal876/' target='_blank'
+            <p style='color:#ffffff; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
+            <a href='https://www.linkedin.com/in/muhammad-omer-faisal' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0a66c2;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
                       font-size:14px; font-weight:600;'>
-                🔗 Connect on LinkedIn </a> </div> """, unsafe_allow_html=True)
+                🔗 Connect on LinkedIn
+            </a> <br><br>
+            <a href='https://github.com/your-repo-link' target='_blank'
+                style='display:inline-flex; align-items:center; gap:8px; background-color:#24292e;
+                    color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
+                    font-size:14px; font-weight:600;'>
+                <img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg'
+                    width='18' height='18' style='filter:invert(1); vertical-align:middle;'>
+                View Github Repository </a> </div> """, unsafe_allow_html=True)
 
     with col_yt:
         st.markdown("""
@@ -255,16 +263,6 @@ if page == "📑 Project Overview":
                       color:#10b981; text-decoration:none; padding:8px 18px; border-radius:6px;
                       font-size:14px; font-weight:600; border: 1px solid #10b981;'>
                 🌐 Visit Website </a> </div> """, unsafe_allow_html=True)
-        
-    st.markdown("<div style='margin-top:0px;'></div>", unsafe_allow_html=True)
-    st.markdown("""
-    <div style='text-align:left; padding:15px 0 5px 0;'>
-        <a href='https://youtu.be/7mz73uXD9DA?si=KnEMVkzxMWeMLSX2' target='_blank'
-           style='display:inline-flex; align-items:center; gap:10px; background-color:#ff0000;
-                  color:white; text-decoration:none; padding:10px 24px; border-radius:6px;
-                  font-size:15px; font-weight:600;'>
-            ▶ Watch the Course on YouTube
-        </a> </div> """, unsafe_allow_html=True)
         
 # PAGE 2: Analytcis Dashboard
 elif page == "📊 Market Overview":
@@ -833,4 +831,5 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
