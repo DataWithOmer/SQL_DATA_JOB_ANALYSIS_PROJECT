@@ -221,7 +221,7 @@ if page == "📑 Project Overview":
     # Developer & Instructor
     st.markdown("<div style='margin-top:-10px;'></div>", unsafe_allow_html=True)
     st.markdown('<hr style="border: 1px solid rgba(255,255,255,0.1)">', unsafe_allow_html=True)
-    col_dev, col_inst = st.columns(2)
+    col_dev, col_yt, col_inst = st.columns(3)
 
     with col_dev:
         st.markdown("""
@@ -232,8 +232,18 @@ if page == "📑 Project Overview":
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0a66c2;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
                       font-size:14px; font-weight:600;'>
-                🔗 Connect on LinkedIn
-            </a> </div> """, unsafe_allow_html=True)
+                🔗 Connect on LinkedIn </a> </div> """, unsafe_allow_html=True)
+
+    with col_yt:
+        st.markdown("""
+        <div style='text-align:center; padding:35px 0 10px 0;'>
+            <p style='color:#94a3b8; font-size:13px; margin-bottom:6px;'> </p>
+            <p style='color:#ffffff; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Course Link</p>
+            <a href='https://youtu.be/7mz73uXD9DA?si=KnEMVkzxMWeMLSX2' target='_blank'
+               style='display:inline-flex; align-items:center; gap:8px; background-color:#ff0000;
+                      color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
+                      font-size:14px; font-weight:600;'>
+                ▶ Watch on YouTube </a> </div> """, unsafe_allow_html=True)
 
     with col_inst:
         st.markdown("""
@@ -244,8 +254,7 @@ if page == "📑 Project Overview":
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0f172a;
                       color:#10b981; text-decoration:none; padding:8px 18px; border-radius:6px;
                       font-size:14px; font-weight:600; border: 1px solid #10b981;'>
-                🌐 Visit Website
-            </a> </div> """, unsafe_allow_html=True)
+                🌐 Visit Website </a> </div> """, unsafe_allow_html=True)
         
     st.markdown("<div style='margin-top:0px;'></div>", unsafe_allow_html=True)
     st.markdown("""
@@ -824,3 +833,4 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
