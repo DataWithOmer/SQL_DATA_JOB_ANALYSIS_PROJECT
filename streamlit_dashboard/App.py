@@ -227,14 +227,14 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='text-align:left; padding:15px 0 10px 0;'>
             <p style='color:#94a3b8; font-size:15.5px; margin-bottom:6px;'>Built by</p>
-            <p style='color:#ffffff; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
+            <p style='color:#ffffff; font-size:18px; font-weight:700; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
             <a href='https://www.linkedin.com/in/muhammad-omer-faisal' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0a66c2;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
                       font-size:14px; font-weight:600;'>
                 🔗 Connect on LinkedIn
             </a> <br><br>
-            <a href='https://github.com/your-repo-link' target='_blank'
+            <a href='https://github.com/DataWithOmer/SQL_DATA_JOB_ANALYSIS_PROJECT' target='_blank'
                 style='display:inline-flex; align-items:center; gap:8px; background-color:#24292e;
                     color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
                     font-size:14px; font-weight:600;'>
@@ -246,7 +246,7 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='text-align:center; padding:35px 0 10px 0;'>
             <p style='color:#94a3b8; font-size:13px; margin-bottom:6px;'> </p>
-            <p style='color:#ffffff; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Course Link</p>
+            <p style='color:#ffffff; font-size:18px; font-weight:700; margin:0 0 12px 0;'>Course Link</p>
             <a href='https://youtu.be/7mz73uXD9DA?si=KnEMVkzxMWeMLSX2' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#ff0000;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
@@ -257,7 +257,7 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='padding:15px 0 10px 0; width:fit-content; margin-left:auto;'>
             <p style='color:#94a3b8; font-size:15.5px; margin-bottom:6px;'>Course Instructor</p>
-            <p style='color:#10b981; font-size:18px; font-weight:800; margin:0 0 12px 0;'>Luke Barousse</p>
+            <p style='color:#10b981; font-size:18px; font-weight:700; margin:0 0 12px 0;'>Luke Barousse</p>
             <a href='https://www.lukebarousse.com/' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0f172a;
                       color:#10b981; text-decoration:none; padding:8px 18px; border-radius:6px;
@@ -831,5 +831,6 @@ elif page == "🏢 Top Hiring Companies":
         st.plotly_chart(fig_company, use_container_width=True, config={'displayModeBar': False})
     else:
         st.info(f"No hiring data available for the current selection.")
+
 
 
