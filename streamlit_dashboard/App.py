@@ -91,6 +91,7 @@ h1, h2, h3 {
 def init_connection():
     return get_connection()
 
+@st.cache_data(ttl=600)
 def load_data(query):
     """ Helper function to execute SQL query and return a DataFrame"""
     try:
@@ -368,12 +369,16 @@ elif page == "📊 Market Overview":
     tick_format = "$~s" if salary_type == "Yearly" else "$0"
 
     scatter_sql = f"""
-        SELECT 
-        job_title_short, 
-        {col_to_use},
-        (SELECT AVG({col_to_use}) FROM job_postings_fact WHERE {col_to_use} IS NOT NULL) AS market_avg
+        SELECT
+            job_title_short,
+            ROUND(AVG({col_to_use}), 0) AS {col_to_use},
+            (SELECT ROUND(AVG({col_to_use}), 0) FROM job_postings_fact 
+                 {market_where} AND {col_to_use} IS NOT NULL) AS market_avg
         FROM job_postings_fact
-        {market_where} AND {col_to_use} IS NOT NULL """
+        {market_where} AND {col_to_use} IS NOT NULL
+        GROUP BY job_title_short
+        ORDER BY {col_to_use} DESC
+        LIMIT 10"""
 
     df_scatter = load_data(scatter_sql)
     
