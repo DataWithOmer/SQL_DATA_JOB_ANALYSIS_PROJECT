@@ -236,15 +236,7 @@ if page == "📑 Project Overview":
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0a66c2;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
                       font-size:14px; font-weight:600;'>
-                🔗 Connect on LinkedIn
-            </a> <br><br>
-            <a href='https://github.com/DataWithOmer/SQL_DATA_JOB_ANALYSIS_PROJECT' target='_blank'
-                style='display:inline-flex; align-items:center; gap:8px; background-color:#24292e;
-                    color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
-                    font-size:14px; font-weight:600;'>
-                <img src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg'
-                    width='18' height='18' style='filter:invert(1); vertical-align:middle;'>
-                View Github Repository </a> </div> """, unsafe_allow_html=True)
+                🔗 Connect on LinkedIn </a> </div> """, unsafe_allow_html=True)
 
     with col_yt:
         st.markdown("""
