@@ -689,7 +689,7 @@ elif page == "🛠️ Skill Economics":
     st.markdown("<p style='color:#ffdb58; font-size:15px; margin-top:-10px;'>💡 Use the <b>skill dropdown below</b> to select a primary skill. The chart shows the top 10 skills that most frequently appear alongside it in the same job posting.</p>", unsafe_allow_html=True)
 
     # Skills dropdown
-    skills_list_sql = """SELECT skills FROM skills_dim ORDER BY skills ASC """
+    skills_list_sql = """SELECT DISTINCT(skills) FROM skills_dim ORDER BY skills ASC """
 
     df_skills = load_data(skills_list_sql)
 
