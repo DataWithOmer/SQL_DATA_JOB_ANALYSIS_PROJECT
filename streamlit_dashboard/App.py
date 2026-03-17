@@ -694,7 +694,7 @@ elif page == "🛠️ Skill Economics":
     df_skills = load_data(skills_list_sql)
 
     if not df_skills.empty:
-        skill_options = sorted([s.title() for s in df_skills['skills'].tolist()])
+        skill_options = sorted(df_skills['skills'].tolist())
         default_idx = skill_options.index('Python')
 
         col_skill, _ = st.columns([1, 3])
