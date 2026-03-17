@@ -235,7 +235,7 @@ if page == "📑 Project Overview":
         st.markdown("""
         <div style='text-align:left; padding:15px 0 10px 0;'>
             <p style='color:#94a3b8; font-size:15.5px; margin-bottom:6px;'>Built by</p>
-            <p style='color:#ffffff; font-size:18px; font-weight:700; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
+            <p style='color:#10b981; font-size:18px; font-weight:700; margin:0 0 12px 0;'>Muhammad Omer Faisal</p>
             <a href='https://www.linkedin.com/in/omer-faisal876/' target='_blank'
                style='display:inline-flex; align-items:center; gap:8px; background-color:#0a66c2;
                       color:white; text-decoration:none; padding:8px 18px; border-radius:6px;
