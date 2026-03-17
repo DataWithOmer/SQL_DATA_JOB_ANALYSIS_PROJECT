@@ -118,17 +118,21 @@ COUNTRY_LIST = load_countries()
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/600px-LinkedIn_logo_initials.png", width=75)
 st.sidebar.title("🔍 Discovery Filters")
 
+page = st.sidebar.selectbox(
+    "**Navigate To**",
+    ["📑 Project Overview", "📊 Market Overview", "💰 Salary Insights", "🛠️ Skill Economics", "🏢 Top Hiring Companies"])
+
 job_filter = st.sidebar.selectbox(
-    "**Select Job Category**", 
-    ["All", "Data Analyst", "Data Scientist", "Data Engineer", "Business Analyst", "Machine Learning Engineer", "Senior Data Analyst",
-     "Senior Data Engineer", "Senior Data Scientist", "Software Engineer", "Cloud Engineer"] )
+    "**Select Job Category**",
+    ["All", "Data Analyst", "Data Scientist", "Data Engineer", "Business Analyst",
+     "Machine Learning Engineer", "Senior Data Analyst", "Senior Data Engineer",
+     "Senior Data Scientist", "Software Engineer", "Cloud Engineer"],
+    index=0)
 
 location_filter = st.sidebar.radio(
-    "**Location Type**",["Global", "Remote Only"] )
+    "**Location Type**", ["Global", "Remote Only"])
 
 st.sidebar.markdown("<div style='margin-top:-30px;'></div>", unsafe_allow_html=True)
-page = st.sidebar.selectbox( 
-    "**Navigate To**",[  "📑 Project Overview", "📊 Market Overview", "💰 Salary Insights"  ,"🛠️ Skill Economics", "🏢 Top Hiring Companies" ])
 
 # Dynamic SQL Where Clause
 where_clause = "WHERE 1=1"
