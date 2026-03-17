@@ -695,7 +695,7 @@ elif page == "🛠️ Skill Economics":
 
     if not df_skills.empty:
         skill_options = sorted(df_skills['skills'].tolist())
-        default_idx = skill_options.index('Python')
+        default_idx = skill_options.index('python')
 
         col_skill, _ = st.columns([1, 3])
         with col_skill:
